@@ -1,0 +1,34 @@
+import { BookingDetails } from './booking-details';
+import { Currency } from './currency';
+import { Charge } from './charge';
+import { StateModel } from './state-model';
+import { ShipperModel } from './shipper-model';
+import { MarketingAreaModel } from './marketing-area-model';
+import { FreightModel } from './freight-model';
+import { DepartureModel } from './departure-model';
+import { CompanyModel } from './company-model';
+import { ColoaderModel } from './coloader-model';
+import { BusinessModel } from './business-model';
+import { AgentModel } from './agent-model';
+import { AirlineModel } from './airline-model';
+import { ConalgneeModel } from './conalgnee-model';
+import { DestinationModel } from './destination-model';
+import { IncoTermModel } from './incoterm-model';
+export interface BookingPageModel {
+  agents?: AgentModel[];
+  airlines?: AirlineModel[];
+  businessModels?: BusinessModel[];
+  coloaders?: ColoaderModel[];
+  companies?: CompanyModel[];
+  conalgnees?: ConalgneeModel[];
+  departures?: DepartureModel[];
+  destinations?: DestinationModel[];
+  freights?: FreightModel[];
+  incoTerms?: IncoTermModel[];
+  marketingAreas?: MarketingAreaModel[];
+  shippers?: ShipperModel[];
+  states?: StateModel[];
+  charge?: Charge[];
+  currency?: Currency[];
+  bookingDetails?: BookingDetails[];
+}
