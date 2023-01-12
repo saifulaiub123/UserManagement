@@ -21,17 +21,14 @@ const COMPONENTS = [
 ];
 
 @NgModule({
-  imports: [
-    ReactiveFormsModule,
-    FormsModule,
-    CommonModule,
-    NbCheckboxModule
-  ],
-  exports: [...COMPONENTS],
-  declarations: [...COMPONENTS,CustomNg2CheckboxComponent],
-  entryComponents: [
-    NgxFilterByNumberComponent,
-  ],
+    imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        CommonModule,
+        NbCheckboxModule
+    ],
+    exports: [...COMPONENTS],
+    declarations: [...COMPONENTS, CustomNg2CheckboxComponent]
 })
 export class ComponentsModule {
 }
