@@ -108,7 +108,7 @@ export const NB_CORE_PROVIDERS = [
     strategies: [
       NbDummyAuthStrategy.setup({
         name: 'email',
-        delay: 3000,
+        delay: 1000,
       }),
     ],
     forms: {

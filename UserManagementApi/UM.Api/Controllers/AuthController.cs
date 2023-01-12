@@ -51,7 +51,8 @@ namespace UM.Api.Controllers
                 SurName = registerModel.SurName,
                 Email = registerModel.Email,
                 UserName = registerModel.Email,
-                PasswordHash = registerModel.Password
+                PasswordHash = registerModel.Password,
+                Status = 1
             };
             var result = await _userManager.CreateAsync(user, registerModel.Password);
             if (!result.Succeeded)

@@ -1,3 +1,4 @@
+import { UserComponent } from './user/user/user.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { FeaturesComponent } from './features.component';
@@ -11,11 +12,10 @@ const routes: Routes = [{
       path: 'dashboard',
       component: DashboardComponent,
     },
-    // {
-    //   path: 'test',
-    //   loadChildren: () => import('./booking/booking.module')
-    //     .then(m => m.BookingModule),
-    // },
+    {
+      path: 'user',
+      component: UserComponent
+    },
     {
       path: '',
       redirectTo: 'dashboard',

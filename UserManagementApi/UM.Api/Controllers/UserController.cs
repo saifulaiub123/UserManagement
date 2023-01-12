@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UM.Domain.DBModel;
+using UM.Domain.ViewModel;
 
 namespace UM.Api.Controllers
 {
@@ -21,7 +22,7 @@ namespace UM.Api.Controllers
         [Route("GetUsers")]
         public async Task<IActionResult> GetUsers()
         {
-            var users = await _userManager.Users.Include(x => x.UserRoles).Where(x => x.Status == 1).ToListAsync();
+            var users = await _userManager.Users.Include(x => x.UserRoles).ThenInclude(x => x.Role).Where(x => x.Status == 1).ToListAsync();        
             return Ok(users);
         }
     }

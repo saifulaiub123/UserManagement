@@ -77,7 +77,7 @@ export const authOptions = {
       },
     },
     logout: {
-      redirectDelay: 3000
+      redirectDelay: 1000
     }
   },
 };
