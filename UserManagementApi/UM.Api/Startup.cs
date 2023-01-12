@@ -52,7 +52,7 @@ namespace UM.Api
                 );
 
             // For Identity  
-            services.AddIdentity<ApplicationUser, UserRole>()
+            services.AddIdentity<ApplicationUser, Role>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 

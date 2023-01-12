@@ -23,7 +23,7 @@ namespace UM.Api.Middleware
             catch (Exception ex)
             {
                 await HandleExceptionAsync(context, ex);
-                Log.Error($"Error - {ex}");
+                Log.Error($"Error - {ex.Message}");
             }
         }
 

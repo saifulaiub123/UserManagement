@@ -7,6 +7,7 @@ using UM.Api.Authentication;
 using UM.Domain.DBModel;
 using UM.Domain.Model;
 using AutoMapper;
+using System.Linq;
 
 namespace UM.Api.Controllers
 {
@@ -16,7 +17,7 @@ namespace UM.Api.Controllers
         private readonly TokenHelper _jwtExt;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly RoleManager<UserRole> _roleManager;
+        private readonly RoleManager<Domain.DBModel.Role> _roleManager;
         private readonly IOtpService _otpService;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
@@ -26,7 +27,7 @@ namespace UM.Api.Controllers
             TokenHelper jwtExt,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            RoleManager<UserRole> roleManager, 
+            RoleManager<Domain.DBModel.Role> roleManager, 
             IOtpService otpService,
             IConfiguration configuration,
             IMapper mapper)
@@ -60,7 +61,7 @@ namespace UM.Api.Controllers
                 var errors = result.Errors.Select(x => x.Description).ToList();
                 return BadRequest(new AuthResponse(){ Errors = errors });
             }
-            await _userManager.AddToRoleAsync(user, Role.User.ToString());
+            await _userManager.AddToRoleAsync(user, Application.Enum.Role.User.ToString());
             return Ok();
         }
 
@@ -76,7 +77,7 @@ namespace UM.Api.Controllers
 
             var user = await _userManager.FindByNameAsync(loginModel.Email);
 
-            if (user == null) return BadRequest();
+            if (user == null || user.Status == 0) return BadRequest();
 
             var userRoles = await _userManager.GetRolesAsync(user);
 
@@ -86,7 +87,7 @@ namespace UM.Api.Controllers
                 Token = token,
                 Name = user.Name,
                 Email = user.Email,
-                Role = userRoles.First()
+                Role = string.Join(",",userRoles.ToList())
             });
             //return Ok(new { token = new { Expires_in = 10000, Access_token  = token}});
         }
