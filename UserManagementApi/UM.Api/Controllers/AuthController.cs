@@ -45,7 +45,6 @@ namespace UM.Api.Controllers
         [Route("Register")]
         public async Task<IActionResult> Register(RegisterModel registerModel)
         {
-            //var user = _mapper.Map<ApplicationUser>(registerModel);
             var user = new ApplicationUser()
             {
                 Name = registerModel.Name,
@@ -57,7 +56,6 @@ namespace UM.Api.Controllers
             var result = await _userManager.CreateAsync(user, registerModel.Password);
             if (!result.Succeeded)
             {
-                //return BadRequest(result.Errors.First().Code.ToString());
                 var errors = result.Errors.Select(x => x.Description).ToList();
                 return BadRequest(new AuthResponse(){ Errors = errors });
             }
@@ -89,7 +87,6 @@ namespace UM.Api.Controllers
                 Email = user.Email,
                 Role = string.Join(",",userRoles.ToList())
             });
-            //return Ok(new { token = new { Expires_in = 10000, Access_token  = token}});
         }
 
     }
