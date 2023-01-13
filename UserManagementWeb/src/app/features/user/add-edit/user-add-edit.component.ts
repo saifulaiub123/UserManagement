@@ -1,17 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NbToastrService } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
-import { UserCustomActionComponent } from '../../../@components/user-custom-action/user-custom-action.component';
+import { UserCustomActionComponent } from '../../../@components/custom-smart-table-components/user-custom-action/user-custom-action.component';
 import { User } from '../../../@core/model/user';
 import { UserService } from '../../../@core/services/user.service';
 
 @Component({
-  selector: 'ngx-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  selector: 'app-user-add-edit',
+  templateUrl: './user-add-edit.component.html',
+  styleUrls: ['./user-add-edit.component.scss']
 })
-export class UserComponent implements OnInit {
+export class UserAddEditComponent implements OnInit {
 
 users: User[] = [];
+userAddEditFormGroup: FormGroup;
+
+submitted: boolean = false;
+loading = false;
+
+pageTitle: string = "User Edit"
 
 sourceUser: LocalDataSource = new LocalDataSource();
 
@@ -63,10 +71,21 @@ sourceUser: LocalDataSource = new LocalDataSource();
   }
 };
 
-  constructor(private _userService: UserService) { }
+
+  constructor(
+    private _userService: UserService,
+    private fb: FormBuilder,
+    private toastrService: NbToastrService
+    ) { }
+
+
+    get name() { return this.userAddEditFormGroup.get('name'); }
+    get email() { return this.userAddEditFormGroup.get('email'); }
+    get phoneNumber() { return this.userAddEditFormGroup.get('phoneNumber'); }
 
   ngOnInit(): void {
     this.loadData();
+    this.createFormGroup();
   }
 
   loadData()
@@ -75,6 +94,25 @@ sourceUser: LocalDataSource = new LocalDataSource();
       this.users = data;
       this.sourceUser.load(data);
     })
+  }
+  createFormGroup()
+  {
+    this.userAddEditFormGroup = this.fb.group({
+      name: this.fb.control(null, [Validators.required]),
+      email: this.fb.control(null, [Validators.required]),
+      phoneNumber: this.fb.control(null, []),
+      role: this.fb.control(null, []),
+    });
+  }
+
+  submit()
+  {
+    this.loading = true;
+
+  }
+  cancel()
+  {
+
   }
 
 }

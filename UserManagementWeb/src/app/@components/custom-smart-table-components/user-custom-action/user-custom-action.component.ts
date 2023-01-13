@@ -1,7 +1,8 @@
 
 import { Component, Input, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
-import { DashboardComponent } from '../../features/dashboard/dashboard/dashboard.component';
+import { DashboardComponent } from '../../../features/dashboard/dashboard/dashboard.component';
+import { UserAddEditComponent } from '../../../features/user/add-edit/user-add-edit.component';
 
 @Component({
   selector: 'ngx-user-custom-action',
@@ -19,9 +20,8 @@ export class UserCustomActionComponent implements OnInit {
 
   openEditModal()
   {
-    let p = this.value;
-    this._dialogService.open(DashboardComponent, {
-      hasScroll: true,
+    this._dialogService.open(UserAddEditComponent, {
+      hasScroll: false,
       closeOnBackdropClick: true,
       autoFocus: false
     })

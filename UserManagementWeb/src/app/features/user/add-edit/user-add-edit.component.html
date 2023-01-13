@@ -1,0 +1,88 @@
+<div class="row">
+  <form class="add-edit-form">
+    <div class="col-md-12">
+  <nb-card class="nb-card-main">
+    <nb-card-header>
+      {{pageTitle}}
+    </nb-card-header>
+    <nb-card-body>
+      <nb-card>
+
+        <nb-card-body>
+            <div class="row show-grid"  [formGroup]="userAddEditFormGroup">
+              <div class="col-6 col-sm-12">
+                <div class="form-group row">
+                  <label for="inputName" class="label col-sm-4 col-form-label">Name*</label>
+                  <div class="col-sm-8">
+                    <input type="text"
+                      nbInput
+                      formControlName="name"
+                      fullWidth
+                      id="inputName"
+                      fieldSize="medium"
+                      placeholder="Name"
+                    >
+                    <!-- [status]="bookingNo.dirty ? (bookingNo.invalid  ? 'danger' : 'success') : ''"
+                    [attr.aria-invalid]="bookingNo.invalid && bookingNo.touched ? true : null" -->
+                    <ngx-validation-message label="Name" [showRequired]="name?.errors?.required && name.touched"></ngx-validation-message>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputEmail" class="label col-sm-4 col-form-label">Email</label>
+                  <div class="col-sm-8">
+                    <input type="text"
+                      nbInput
+                      formControlName="email"
+                      fullWidth
+                      id="inputEmail"
+                      fieldSize="medium"
+                      placeholder="Email"
+                    >
+                      <!-- [status]="shipperId.dirty ? (shipperId.invalid  ? 'danger' : 'success') : ''"
+                      [attr.aria-invalid]="shipperId.invalid && shipperId.touched ? true : null" -->
+                    <ngx-validation-message label="Email" [showRequired]="email?.errors?.required && email.touched"></ngx-validation-message>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPhoneNumber" class="label col-sm-4 col-form-label">Phone Number</label>
+                  <div class="col-sm-8">
+                    <input type="text"
+                      nbInput
+                      formControlName="phoneNumber"
+                      fullWidth
+                      id="inputPhoneNumber"
+                      fieldSize="medium"
+                      placeholder="Email"
+                    >
+                      <!-- [status]="shipperId.dirty ? (shipperId.invalid  ? 'danger' : 'success') : ''"
+                      [attr.aria-invalid]="shipperId.invalid && shipperId.touched ? true : null" -->
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputRole" class="label col-sm-4 col-form-label">Role</label>
+                  <div class="col-sm-8">
+                      <nb-card>
+                        <nb-card-body>
+
+                        </nb-card-body>
+                      </nb-card>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </nb-card-body>
+      </nb-card>
+    </nb-card-body>
+    <nb-card-footer>
+      <!-- <button nbButton status="primary" [nbSpinner]="loading" nbSpinnerStatus="primary" size="medium" style="float: right" [disabled]="submitted || !userAddEditFormGroup.valid" (click)="submit()">Save</button> -->
+      <button nbButton type="button" status="primary" [nbSpinner]="loading" nbSpinnerStatus="control" size="medium" style="float: right" (click)="submit()">Save</button>
+
+      <button nbButton type="button" size="medium" style="float: right;margin-right: 5px;" (click)="cancel()">Cancel</button>
+    </nb-card-footer>
+  </nb-card>
+  </div>
+</form>
+</div>
+
+
+

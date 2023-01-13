@@ -1,4 +1,4 @@
-import { UserComponent } from './user/user/user.component';
+import { UserListComponent } from './user/list/user-list.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { FeaturesComponent } from './features.component';
@@ -14,7 +14,7 @@ const routes: Routes = [{
     },
     {
       path: 'user',
-      component: UserComponent
+      component: UserListComponent
     },
     {
       path: '',

@@ -14,7 +14,7 @@ import {
 
 import { NbCheckboxModule } from '@nebular/theme';
 import { CustomNg2CheckboxComponent } from './custom-smart-table-components/custom-checkbox/custom-checkbox.component';
-import { UserCustomActionComponent } from './user-custom-action/user-custom-action.component';
+import { UserCustomActionComponent } from './custom-smart-table-components/user-custom-action/user-custom-action.component';
 
 const COMPONENTS = [
   NgxValidationMessageComponent,
