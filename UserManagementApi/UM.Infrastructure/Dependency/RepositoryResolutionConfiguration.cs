@@ -9,6 +9,7 @@ namespace UM.Infrastructure.Dependency
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             services.AddScoped<IOtpRepository, OtpRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
     }

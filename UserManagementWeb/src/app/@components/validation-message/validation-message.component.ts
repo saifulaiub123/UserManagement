@@ -12,6 +12,7 @@ import {NG_VALUE_ACCESSOR} from '@angular/forms';
           <span class="caption status-danger"
              *ngIf="showMaxLength"> Max {{ label }} length is {{ maxLength }} symbols </span>
           <span class="caption status-danger" *ngIf="showPattern"> Incorrect {{ label }} </span>
+          <span class="caption status-danger" *ngIf="customLabel != ''">{{ customLabel }} </span>
           <span class="caption status-danger" *ngIf="showRequired"> {{ label }} is required</span>
           <span class="caption status-danger" *ngIf="showMin">Min value of {{ label }} is {{ min }}</span>
           <span class="caption status-danger" *ngIf="showMax">Max value of {{ label }} is {{ max }}</span>
@@ -26,6 +27,9 @@ import {NG_VALUE_ACCESSOR} from '@angular/forms';
   ],
 })
 export class NgxValidationMessageComponent {
+  @Input()
+  customLabel: string = '';
+
   @Input()
   label: string = '';
 

@@ -11,7 +11,7 @@ import { UserAddEditComponent } from '../../../features/user/add-edit/user-add-e
 })
 export class UserCustomActionComponent implements OnInit {
 
-  @Input() value: string | number;
+  @Input() value: number;
 
   constructor(private _dialogService: NbDialogService,) { }
 
@@ -23,7 +23,10 @@ export class UserCustomActionComponent implements OnInit {
     this._dialogService.open(UserAddEditComponent, {
       hasScroll: false,
       closeOnBackdropClick: true,
-      autoFocus: false
+      autoFocus: false,
+      context : {
+        userId : this.value
+      }
     })
     .onClose.subscribe(value => {
       if(value)

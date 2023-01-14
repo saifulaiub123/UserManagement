@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from '../../@components/components.module';
 import { UserListComponent } from './list/user-list.component';
 import { UserAddEditComponent } from './add-edit/user-add-edit.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { UserAddEditComponent } from './add-edit/user-add-edit.component';
     ReactiveFormsModule,
     UserRoutingModule,
     NbInputModule,
-    NbSpinnerModule
+    NbSpinnerModule,
+    CommonModule
 
   ],
   declarations: [

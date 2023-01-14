@@ -9,24 +9,18 @@ import { BookingModel } from "../model/booking-model";
 import { BookingPageModel } from "../model/booking-page-model";
 import { BookingViewModel } from "../model/booking-view-model";
 import { User } from '../model/user';
+import { Role } from '../model/role';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class RoleService {
 
-  private api: string = environment.apiUrl + "/User";
+  private api: string = environment.apiUrl + "/Role";
   constructor(private http: HttpClient){
 
   }
 
-  getUsers(): Observable<User[]>{
-    return this.http.get<User[]>(`${this.api}/GetUsers`);
+  getRoles(): Observable<Role[]>{
+    return this.http.get<Role[]>(`${this.api}/GetRoles`);
   }
-  getUserById(id: number): Observable<User>{
-    return this.http.get<User>(`${this.api}/GetUserById?id=`+id);
-  }
-  updateUser(data: any): Observable<any>{
-    return this.http.patch(`${this.api}/UpdateUser`,data);
-  }
-
 }

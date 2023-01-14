@@ -1,3 +1,4 @@
+import { UserSharedService } from './../user-shared.service';
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { UserCustomActionComponent } from '../../../@components/custom-smart-table-components/user-custom-action/user-custom-action.component';
@@ -53,7 +54,7 @@ sourceUser: LocalDataSource = new LocalDataSource();
       type: 'custom',
       renderComponent: UserCustomActionComponent,
       valuePrepareFunction: (value, row, cell) => {
-        return value;
+        return row.id;
       },
       filter: false,
     }
@@ -63,10 +64,20 @@ sourceUser: LocalDataSource = new LocalDataSource();
   }
 };
 
-  constructor(private _userService: UserService) { }
+  constructor(private _userService: UserService,private _userSharedService: UserSharedService) { }
 
   ngOnInit(): void {
+    this.subscribeSharedData();
     this.loadData();
+  }
+  subscribeSharedData(){
+    this._userSharedService.isUserUpdated$.subscribe((status : boolean) => {
+      if(status)
+      {
+        this.loadData();
+      }
+     });
+
   }
 
   loadData()

@@ -1,5 +1,5 @@
 <div class="row">
-  <form class="add-edit-form">
+  <form class="add-edit-form" [formGroup]="userAddEditFormGroup">
     <div class="col-md-12">
   <nb-card class="nb-card-main">
     <nb-card-header>
@@ -7,9 +7,8 @@
     </nb-card-header>
     <nb-card-body>
       <nb-card>
-
         <nb-card-body>
-            <div class="row show-grid"  [formGroup]="userAddEditFormGroup">
+            <div class="row show-grid">
               <div class="col-6 col-sm-12">
                 <div class="form-group row">
                   <label for="inputName" class="label col-sm-4 col-form-label">Name*</label>
@@ -22,8 +21,6 @@
                       fieldSize="medium"
                       placeholder="Name"
                     >
-                    <!-- [status]="bookingNo.dirty ? (bookingNo.invalid  ? 'danger' : 'success') : ''"
-                    [attr.aria-invalid]="bookingNo.invalid && bookingNo.touched ? true : null" -->
                     <ngx-validation-message label="Name" [showRequired]="name?.errors?.required && name.touched"></ngx-validation-message>
                   </div>
                 </div>
@@ -37,9 +34,8 @@
                       id="inputEmail"
                       fieldSize="medium"
                       placeholder="Email"
+                      disabled
                     >
-                      <!-- [status]="shipperId.dirty ? (shipperId.invalid  ? 'danger' : 'success') : ''"
-                      [attr.aria-invalid]="shipperId.invalid && shipperId.touched ? true : null" -->
                     <ngx-validation-message label="Email" [showRequired]="email?.errors?.required && email.touched"></ngx-validation-message>
                   </div>
                 </div>
@@ -52,10 +48,8 @@
                       fullWidth
                       id="inputPhoneNumber"
                       fieldSize="medium"
-                      placeholder="Email"
+                      placeholder="Phone number"
                     >
-                      <!-- [status]="shipperId.dirty ? (shipperId.invalid  ? 'danger' : 'success') : ''"
-                      [attr.aria-invalid]="shipperId.invalid && shipperId.touched ? true : null" -->
                   </div>
                 </div>
                 <div class="form-group row">
@@ -63,8 +57,13 @@
                   <div class="col-sm-8">
                       <nb-card>
                         <nb-card-body>
-
-                        </nb-card-body>
+                          <div class="mr-2" *ngFor="let role of rolesData; let i = index">
+                            <input type="checkbox" style="margin-right: 2px" formArrayName="roles" [value]="role.id" (change)="onCheckboxChange($event)" id="roleCheckbox{{i}}" [checked]="roles.value.includes(role.id)"/>
+                          <label for="roleCheckbox{{i}}" class="label col-form-label">  {{rolesData[i].name}}</label>
+                        </div>
+                        <ngx-validation-message customLabel="Plese select at least one role" *ngIf="roles.controls.length <= 0"></ngx-validation-message>
+                        <ngx-validation-message label="Checkbox" [min]="roles?.errors?.min"></ngx-validation-message>
+                      </nb-card-body>
                       </nb-card>
                   </div>
                 </div>
@@ -74,9 +73,7 @@
       </nb-card>
     </nb-card-body>
     <nb-card-footer>
-      <!-- <button nbButton status="primary" [nbSpinner]="loading" nbSpinnerStatus="primary" size="medium" style="float: right" [disabled]="submitted || !userAddEditFormGroup.valid" (click)="submit()">Save</button> -->
-      <button nbButton type="button" status="primary" [nbSpinner]="loading" nbSpinnerStatus="control" size="medium" style="float: right" (click)="submit()">Save</button>
-
+      <button nbButton type="button" status="primary" [disabled]="!userAddEditFormGroup.valid || roles.value.length == 0" [nbSpinner]="loading" nbSpinnerStatus="control" size="medium" style="float: right" (click)="submit()">Save</button>
       <button nbButton type="button" size="medium" style="float: right;margin-right: 5px;" (click)="cancel()">Cancel</button>
     </nb-card-footer>
   </nb-card>
