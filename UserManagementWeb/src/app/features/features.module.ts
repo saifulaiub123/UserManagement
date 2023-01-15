@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { ComponentsModule } from '../@components/components.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserModule } from './user/user.module';
+import { AccessDeniedComponent } from './access-denied/access-denied.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { UserModule } from './user/user.module';
   ],
   declarations: [
     FeaturesComponent,
-    DashboardComponent
+    DashboardComponent,
+    AccessDeniedComponent
   ],
 })
 export class FeaturesModule {

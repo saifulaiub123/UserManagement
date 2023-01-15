@@ -18,9 +18,26 @@ export class AuthGuard implements CanActivate {
           if (!authenticated) {
             this.router.navigate(['auth/login']);
           }
+          return this.checkUserRole(route,state.url);
         }),
       );
 
+  }
+  checkUserRole(route: ActivatedRouteSnapshot, url: any): boolean {
+    if (this.authService.isAuthenticated()) {
+      const userRoles = (JSON.parse(localStorage.getItem("UserData")).role).split(',');
+      if (route.data.role) {
+        const found = userRoles.find((val, index) => {
+           return route.data.role.includes(val)
+        })
+      if(found === undefined)
+        {
+          this.router.navigate(['/auth/login']);
+        }
+      }
+      return true;
+    }
+    return false;
   }
 }
 

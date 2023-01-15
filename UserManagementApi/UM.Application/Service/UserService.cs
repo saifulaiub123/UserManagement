@@ -1,11 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
 using UM.Application.IService;
 using UM.Domain.DBModel;
 using UM.Domain.IRepository;
@@ -36,8 +30,6 @@ namespace UM.Application.Service
 
         public async Task UpdateUser(UserModel user)
         {
-            //using (var scope = new TransactionScope())
-            //{
             var exist = await _userRepository.GetUserById(user.Id);
             if (exist != null)
             {
@@ -59,7 +51,6 @@ namespace UM.Application.Service
                 }
             }
             _ = await _userManager.UpdateAsync(exist);
-            //}
         }
     }
 }

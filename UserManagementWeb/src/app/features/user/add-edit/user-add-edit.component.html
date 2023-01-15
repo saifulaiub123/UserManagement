@@ -1,5 +1,5 @@
 <div class="row">
-  <form class="add-edit-form" [formGroup]="userAddEditFormGroup">
+  <form class="add-edit-form" *ngIf="userAddEditFormGroup" [formGroup]="userAddEditFormGroup">
     <div class="col-md-12">
   <nb-card class="nb-card-main">
     <nb-card-header>

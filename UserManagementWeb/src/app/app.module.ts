@@ -12,6 +12,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
+  NbCardModule,
   NbChatModule,
   NbDatepickerModule,
   NbDialogModule,
@@ -45,7 +46,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
-    NgbModule,
+    NgbModule
   ],
   bootstrap: [AppComponent],
   providers: [],

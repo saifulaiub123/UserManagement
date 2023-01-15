@@ -87,6 +87,7 @@ export class LoginComponent implements OnInit {
       this.submitted = false;
 
       if (result.isSuccess()) {
+        localStorage.setItem("UserData",JSON.stringify(result.getResponse().body))
         this.messages = result.getMessages();
         // this.initUserService.initCurrentUser().subscribe();
       } else {
