@@ -28,5 +28,8 @@ export class UserService {
   updateUser(data: any): Observable<any>{
     return this.http.patch(`${this.api}/UpdateUser`,data);
   }
+  changePassword(data: any): Observable<any>{
+    return this.http.patch(`${this.api}/ChangePassword`,data);
+  }
 
 }

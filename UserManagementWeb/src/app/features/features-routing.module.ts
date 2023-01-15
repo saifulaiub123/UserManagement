@@ -1,3 +1,6 @@
+import { ReportsComponent } from './reports/reports.component';
+import { RewardPointsComponent } from './reward-points/reward-points.component';
+import { OrderComponent } from './order/order.component';
 import { UserListComponent } from './user/list/user-list.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -26,6 +29,30 @@ const routes: Routes = [{
       },
       loadChildren: () => import('./user/user.module')
       .then(m => m.UserModule),
+    },
+    {
+      path: 'order',
+      canActivate: [AuthGuard],
+      data: {
+        role: ['User']
+      },
+      component: OrderComponent,
+    },
+    {
+      path: 'reward-points',
+      canActivate: [AuthGuard],
+      data: {
+        role: ['User']
+      },
+      component: RewardPointsComponent,
+    },
+    {
+      path: 'reports',
+      canActivate: [AuthGuard],
+      data: {
+        role: ['Partner']
+      },
+      component: ReportsComponent,
     },
     {
       path: 'settings',

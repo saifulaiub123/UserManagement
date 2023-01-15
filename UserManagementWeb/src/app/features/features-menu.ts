@@ -5,7 +5,7 @@ export const MENU_ITEMS = [
     title: 'Dashboard',
     icon: 'keypad-outline',
     link: '/feature/dashboard',
-    role: ['Admin'],
+    role: ['Admin','User','Partner'],
     home: true,
   },
   {
@@ -17,14 +17,14 @@ export const MENU_ITEMS = [
   {
     title: 'My Order',
     icon: 'keypad-outline',
-    link: '/feature/Order',
+    link: '/feature/order',
     role: ['User']
   },
   {
     title: 'Reward Points',
     icon: 'keypad-outline',
     link: '/feature/reward-points',
-    role: ['User','Partner']
+    role: ['User']
   },
   {
     title: 'Reports',

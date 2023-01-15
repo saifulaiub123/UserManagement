@@ -7,12 +7,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ComponentsModule } from '../../@components/components.module';
 import { UserRoutingModule } from '../user/user-routing.module';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    ProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,

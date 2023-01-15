@@ -54,8 +54,6 @@ export class ProfileComponent implements OnInit {
     get name() { return this.userAddEditFormGroup.get('name'); }
     get email() { return this.userAddEditFormGroup.get('email'); }
     get phoneNumber() { return this.userAddEditFormGroup.get('phoneNumber'); }
-    get password() { return this.userAddEditFormGroup.get('password'); }
-    get confirmPassword() { return this.userAddEditFormGroup.get('confirmPassword'); }
     get roles() { return <FormArray> this.userAddEditFormGroup.get('roles'); }
 
   ngOnInit(): void {
@@ -84,8 +82,6 @@ export class ProfileComponent implements OnInit {
       name: this._fb.control(null, [Validators.required]),
       email: this._fb.control(null, [Validators.required]),
       phoneNumber: this._fb.control(null, []),
-      password: this._fb.control('', [...passwordValidators]),
-      confirmPassword: this._fb.control('', [...passwordValidators]),
       roles: this._fb.array([],Validators.min(1))
     });
   }

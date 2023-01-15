@@ -4,6 +4,9 @@ using UM.Application.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using UM.Domain.Constant;
+using UM.Domain.DBModel;
+using UM.Infrastructure.DBContext;
+using Microsoft.AspNetCore.Identity;
 
 namespace UM.Api.Authentication
 {
@@ -43,11 +46,20 @@ namespace UM.Api.Authentication
                     };
                 });
 
-            //services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
-            //    {
-            //        opt.Password.RequiredLength = 5;
-            //        opt.Password.RequireDigit = true;
-            //        opt.Password.RequireUppercase = true;
+                services.AddIdentity<ApplicationUser, Role>(opt =>
+                {
+                    opt.Password.RequiredLength = 4;
+                    opt.Password.RequireDigit = false;
+                    opt.Password.RequireUppercase = false;
+                })
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            //services.AddIdentity<ApplicationUser, Role>(opt =>
+            //    { 
+            //        opt.Password.RequiredLength = 4;
+            //        opt.Password.RequireDigit = false;
+            //        opt.Password.RequireUppercase = false;
             //    })
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
 

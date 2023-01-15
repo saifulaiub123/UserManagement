@@ -43,5 +43,13 @@ namespace UM.Api.Controllers
             await _userService.UpdateUser(user);
             return Ok();
         }
+        [HttpPatch]
+        [Route("ChangePassword")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordModel changePasswordModel)
+        {
+            var user = await _userManager.FindByIdAsync(changePasswordModel.Id.ToString());
+            await _userManager.ChangePasswordAsync(user, changePasswordModel.CurrentPassword, changePasswordModel.NewPassword);
+            return Ok();
+        }
     }
 }

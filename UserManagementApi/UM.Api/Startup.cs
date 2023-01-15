@@ -51,10 +51,8 @@ namespace UM.Api
                             options => options.EnableRetryOnFailure())
                 );
 
-            // For Identity  
-            services.AddIdentity<ApplicationUser, Role>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+            
+            
 
             services.AddServices();
             services.AddRepositories();
