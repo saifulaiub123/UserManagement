@@ -32,10 +32,10 @@ export class FeaturesComponent implements OnInit,OnDestroy {
 
   generateMenuItems(){
     this.roles = (JSON.parse(localStorage.getItem("UserData")).role).split(',');
-    MENU_ITEMS.forEach(item => {
+    MENU_ITEMS.forEach((item,index) => {
       if (item.role.length == 0)
       {
-        this.addMenuItem(item);
+        this.addMenuItem(item,index);
       }
       else
       {
@@ -45,19 +45,20 @@ export class FeaturesComponent implements OnInit,OnDestroy {
 
         if(found !== undefined)
         {
-          this.addMenuItem(item);
+          this.addMenuItem(item,index);
         }
       }
     })
     this.menuService.addItems(this.menu, 'menu');
   }
 
-  addMenuItem(item: any)
+  addMenuItem(item: any,index: number)
   {
     this.menu.push({
       title: item.title,
       icon: item.icon,
       link: item.link,
+      home: index === 0? true : false
     });
   }
 }

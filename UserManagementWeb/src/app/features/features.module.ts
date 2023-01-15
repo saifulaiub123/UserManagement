@@ -10,7 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { ComponentsModule } from '../@components/components.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserModule } from './user/user.module';
-import { AccessDeniedComponent } from './access-denied/access-denied.component';
+import { AccessDeniedComponent } from '../page/access-denied/access-denied.component';
 
 @NgModule({
   imports: [
@@ -29,7 +29,6 @@ import { AccessDeniedComponent } from './access-denied/access-denied.component';
   declarations: [
     FeaturesComponent,
     DashboardComponent,
-    AccessDeniedComponent
   ],
 })
 export class FeaturesModule {

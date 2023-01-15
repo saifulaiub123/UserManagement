@@ -25,6 +25,8 @@ import {
 import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 import { AuthModule } from './auth/auth.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PageModule } from './page/page.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
@@ -46,7 +48,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
-    NgbModule
+    NgbModule,
+    PageModule
   ],
   bootstrap: [AppComponent],
   providers: [],

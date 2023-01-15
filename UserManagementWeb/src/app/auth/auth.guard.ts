@@ -32,7 +32,7 @@ export class AuthGuard implements CanActivate {
         })
       if(found === undefined)
         {
-          this.router.navigate(['/auth/login']);
+          this.router.navigate(['/page/access-denied']);
         }
       }
       return true;

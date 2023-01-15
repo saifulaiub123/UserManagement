@@ -10,6 +10,11 @@ export const routes: Routes = [
       .then(m => m.PagesModule),
   },
   {
+    path: 'page',
+    loadChildren: () => import('./page/page.module')
+      .then(m => m.PageModule),
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
