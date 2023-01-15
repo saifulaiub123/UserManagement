@@ -43,8 +43,8 @@ export class RegisterComponent implements OnInit {
   get name() { return this.registerForm.get('name'); }
   get surname() { return this.registerForm.get('surname'); }
   get email() { return this.registerForm.get('email'); }
-  get password() { return this.registerForm.get('password'); }
-  get confirmPassword() { return this.registerForm.get('confirmPassword'); }
+    get password() { return this.registerForm.get('password'); }
+    get confirmPassword() { return this.registerForm.get('confirmPassword'); }
   // get terms() { return this.registerForm.get('terms'); }
 
   ngOnInit(): void {

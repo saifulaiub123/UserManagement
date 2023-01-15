@@ -49,7 +49,7 @@ import { RouterModule } from '@angular/router';
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
     NgbModule,
-    PageModule
+    PageModule,
   ],
   bootstrap: [AppComponent],
   providers: [],
