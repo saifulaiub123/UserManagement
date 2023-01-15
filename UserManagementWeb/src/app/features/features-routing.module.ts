@@ -24,6 +24,17 @@ const routes: Routes = [{
       data: {
         role: ['Admin']
       },
+      loadChildren: () => import('./user/user.module')
+      .then(m => m.UserModule),
+    },
+    {
+      path: 'settings',
+      canActivate: [AuthGuard],
+      data: {
+        role: ['Admin']
+      },
+      loadChildren: () => import('./settings/settings.module')
+      .then(m => m.SettingsModule),
     },
     {
       path: '',

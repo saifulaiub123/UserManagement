@@ -84,6 +84,7 @@ namespace UM.Api.Controllers
             return Ok(new LoginResponse()
             {
                 Token = token,
+                Id = user.Id,
                 Name = user.Name,
                 Email = user.Email,
                 Role = string.Join(",",userRoles.ToList())

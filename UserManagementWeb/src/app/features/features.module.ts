@@ -11,11 +11,13 @@ import { ComponentsModule } from '../@components/components.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserModule } from './user/user.module';
 import { AccessDeniedComponent } from '../page/access-denied/access-denied.component';
+import { SettingsModule } from './settings/settings.module';
 
 @NgModule({
   imports: [
     FeaturesRoutingModule,
-    UserModule,
+    // UserModule,
+    // SettingsModule,
 
     ThemeModule,
     NbMenuModule,
