@@ -25,6 +25,7 @@ namespace UM.Api.Controllers
             try
             {
                 await _otpService.SendOtp(mobileNumber);
+                throw new Exception("Error");
             }
             catch (Exception e)
             {
@@ -49,6 +50,11 @@ namespace UM.Api.Controllers
         [Authorize(Roles = "User")]
         [HttpGet("Test")]
         public async Task<IActionResult> Test()
+        {
+            return Ok("Ok");
+        }
+        [HttpGet("TestApi")]
+        public async Task<IActionResult> TestApi()
         {
             return Ok("Ok");
         }

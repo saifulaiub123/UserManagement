@@ -1,5 +1,9 @@
 using UM.Api;
 using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.MSSqlServer;
+using System.Collections.ObjectModel;
+using System.Data;
 
 public class Program
 {
@@ -12,28 +16,28 @@ public class Program
 
     public static void Main(string[] args)
     {
-        Log.Logger = new LoggerConfiguration()
-            .ReadFrom.Configuration(Configuration)
-            .CreateLogger();
-        //Serilog.Debugging.SelfLog.Enable(msg =>
-        //{
-        //    Debug.Print(msg);
-        //    Debugger.Break();
-        //});
-
-
         try
         {
+            string connectionString = Configuration.GetConnectionString("DBConnectionString");
+            var columnOptions = new ColumnOptions
+            {
+                AdditionalColumns = new Collection<SqlColumn>
+               {
+                   new SqlColumn("UserName", SqlDbType.NVarChar)
+                 }
+            };
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .WriteTo.MSSqlServer(connectionString, sinkOptions: new MSSqlServerSinkOptions { TableName = "Log" }
+                , null, null, LogEventLevel.Information, null, columnOptions: columnOptions, null, null)
+                .CreateLogger();
+
             Log.Information("Application starting....");
             CreateHostBuilder(args).Build().Run();
         }
         catch (Exception e)
         {
             Log.Fatal(e, "Host terminated unexpectedly");
-        }
-        finally
-        {
-            Log.CloseAndFlush();
         }
     }
 

@@ -6,6 +6,7 @@ import { NB_AUTH_OPTIONS, NbAuthSocialLink, NbAuthService, NbAuthResult } from '
 import { RegisterModel } from '../../../@core/model/register-model';
 import { getDeepFromObject } from '../../helpers';
 import { EMAIL_PATTERN } from '../../../@core/const/constants';
+import { NbToastrService } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-register',
@@ -37,7 +38,8 @@ export class RegisterComponent implements OnInit {
     @Inject(NB_AUTH_OPTIONS) protected options = {},
     protected cd: ChangeDetectorRef,
     private fb: FormBuilder,
-    protected router: Router) {
+    protected router: Router,
+    private _toastrService: NbToastrService,) {
   }
 
   get name() { return this.registerForm.get('name'); }
@@ -95,6 +97,7 @@ export class RegisterComponent implements OnInit {
       this.submitted = false;
       if (result.isSuccess()) {
         this.messages = result.getMessages();
+        this._toastrService.success("Successfull","Account Created Successfully");
         this.router.navigateByUrl("auth/login");
       } else {
         this.errors = result.getErrors();

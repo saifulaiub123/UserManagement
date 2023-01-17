@@ -1,5 +1,5 @@
 
 export const environment = {
   production: true,
-  apiUrl: 'http://api.oymacinar.xyz/api',
+  apiUrl: 'http://hernan2023-001-site2.atempurl.com/api',
 };

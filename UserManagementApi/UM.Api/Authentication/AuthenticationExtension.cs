@@ -7,6 +7,7 @@ using UM.Domain.Constant;
 using UM.Domain.DBModel;
 using UM.Infrastructure.DBContext;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 
 namespace UM.Api.Authentication
 {
@@ -46,23 +47,18 @@ namespace UM.Api.Authentication
                     };
                 });
 
-                services.AddIdentity<ApplicationUser, Role>(opt =>
+                services.AddIdentity<ApplicationUser, Role>(options =>
                 {
-                    opt.Password.RequiredLength = 4;
-                    opt.Password.RequireDigit = false;
-                    opt.Password.RequireUppercase = false;
+                    options.Password.RequiredLength = 4;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireUppercase = false;
+
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequiredUniqueChars = 0;
                 })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
-            //services.AddIdentity<ApplicationUser, Role>(opt =>
-            //    { 
-            //        opt.Password.RequiredLength = 4;
-            //        opt.Password.RequireDigit = false;
-            //        opt.Password.RequireUppercase = false;
-            //    })
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
-
             return services;
         }
     }
