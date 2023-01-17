@@ -17,8 +17,6 @@ CREATE TABLE [dbo].[Log](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]  
 
 
-
-
 if not exists (select [name] from AspNetRoles where name='Admin')
 begin
 INSERT INTO [dbo].[AspNetRoles]([Id],[ConcurrencyStamp],[Name],[NormalizedName]) VALUES (1,NEWID(),'Admin','ADMIN');
