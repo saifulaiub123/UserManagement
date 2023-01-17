@@ -49,8 +49,8 @@ namespace UM.Application.Service
                         await _userRepository.AddUserRole(new UserRole() { UserId = user.Id, RoleId = updateRole });
                     }
                 }
+				await _userManager.UpdateAsync(exist);
             }
-            _ = await _userManager.UpdateAsync(exist);
         }
     }
 }
