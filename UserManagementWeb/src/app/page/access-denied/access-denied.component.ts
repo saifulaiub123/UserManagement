@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Location } from '@angular/common'
 
 @Component({
-  selector: 'ngx-not-found',
+  selector: 'ngx-access-denied',
   styleUrls: ['./access-denied.component.scss'],
   templateUrl: './access-denied.component.html',
 })

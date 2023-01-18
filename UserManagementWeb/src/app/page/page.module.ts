@@ -13,7 +13,10 @@ import { ComponentsModule } from '../@components/components.module';
 
 
 @NgModule({
-  declarations: [AccessDeniedComponent, PageComponent],
+  declarations: [
+    AccessDeniedComponent,
+    PageComponent
+  ],
   imports: [
     CommonModule,
     PageRoutingModule,

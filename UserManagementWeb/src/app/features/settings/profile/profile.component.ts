@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
   loading = false;
   isFormValid = false;
   isEditMode = this.userId != 0 ? true : false;
-  isAdmin: boolean;
+  isAdmin: boolean = false;
 
   pageTitle: string = "Profile"
 
@@ -60,7 +60,6 @@ export class ProfileComponent implements OnInit {
 
     const currentUser = (JSON.parse(localStorage.getItem("UserData")));
     this.userId = currentUser.id;
-    this.isAdmin = true;
     if(currentUser.role.includes('Admin'))
     {
       this.isAdmin = true;
