@@ -4,6 +4,7 @@
   <nb-card class="nb-card-main">
     <nb-card-header>
       {{pageTitle}}
+      <nb-icon icon="close-outline" style="font-size: 1.5rem;cursor: pointer;float: right;" [options]="{ animation: { type: 'zoom' } }" (click)="cancel()"></nb-icon>
     </nb-card-header>
     <nb-card-body>
       <nb-card>
@@ -63,18 +64,22 @@
                         </div>
                         <ngx-validation-message customLabel="Plese select at least one role" *ngIf="roles.controls.length <= 0"></ngx-validation-message>
                         <ngx-validation-message label="Checkbox" [min]="roles?.errors?.min"></ngx-validation-message>
-                      </nb-card-body>
+
+                        </nb-card-body>
                       </nb-card>
                   </div>
                 </div>
+                <button nbButton type="button" status="primary" size="small" [disabled]="!userAddEditFormGroup.valid || roles.value.length == 0" [nbSpinner]="loading" nbSpinnerStatus="control"  style="float: right" (click)="submit()">Save</button>
+
               </div>
             </div>
         </nb-card-body>
       </nb-card>
+      <div *ngIf="userId !== 0">
+        <app-reset-password [userId] = "userId"></app-reset-password>
+      </div>
     </nb-card-body>
     <nb-card-footer>
-      <button nbButton type="button" status="primary" [disabled]="!userAddEditFormGroup.valid || roles.value.length == 0" [nbSpinner]="loading" nbSpinnerStatus="control" size="medium" style="float: right" (click)="submit()">Save</button>
-      <button nbButton type="button" size="medium" style="float: right;margin-right: 5px;" (click)="cancel()">Cancel</button>
     </nb-card-footer>
   </nb-card>
   </div>
