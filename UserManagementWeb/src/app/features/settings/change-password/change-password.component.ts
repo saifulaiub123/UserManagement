@@ -64,8 +64,8 @@ export class ChangePasswordComponent implements OnInit {
 
     this.changePasswordFormGroup = this._fb.group({
       currentPassword: this._fb.control(null, [Validators.required]),
-      newPassword: this._fb.control('', [...passwordValidators]),
-      confirmPassword: this._fb.control('', [...passwordValidators]),
+      newPassword: this._fb.control('', [...passwordValidators,Validators.required]),
+      confirmPassword: this._fb.control('', [...passwordValidators,Validators.required]),
     });
   }
 
@@ -75,11 +75,16 @@ export class ChangePasswordComponent implements OnInit {
     this.submitted = true;
     let data = this.changePasswordFormGroup.value;
     data.id = this.userId;
-    this._userService.changePassword(data).subscribe(() =>{
-      this.loading = false;
-      this.changePasswordFormGroup.reset();
-      this._toastrService.success("Successfull","Updated Successfully");
-      this._router.navigateByUrl("/auth/logout");
+    this._userService.changePassword(data).subscribe({
+      next : () =>{
+        this.loading = false;
+        this.changePasswordFormGroup.reset();
+        this._toastrService.success("Successfull","Updated Successfully");
+        this._router.navigateByUrl("/auth/logout");
+      },
+      error : (err) => {
+        this.loading = false;
+      }
     })
   }
 

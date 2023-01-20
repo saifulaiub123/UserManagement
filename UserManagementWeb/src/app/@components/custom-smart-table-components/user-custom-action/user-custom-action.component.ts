@@ -21,7 +21,7 @@ export class UserCustomActionComponent implements OnInit {
   openEditModal()
   {
     this._dialogService.open(UserAddEditComponent, {
-      hasScroll: false,
+      hasScroll: true,
       closeOnBackdropClick: true,
       autoFocus: false,
       context : {

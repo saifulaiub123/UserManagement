@@ -48,7 +48,11 @@ namespace UM.Api.Controllers
         public async Task<IActionResult> ChangePassword(ChangePasswordModel changePasswordModel)
         {
             var user = await _userManager.FindByIdAsync(changePasswordModel.Id.ToString());
-            await _userManager.ChangePasswordAsync(user, changePasswordModel.CurrentPassword, changePasswordModel.NewPassword);
+            var result = await _userManager.ChangePasswordAsync(user, changePasswordModel.CurrentPassword, changePasswordModel.NewPassword);
+            if (!result.Succeeded)
+            {
+                return BadRequest(result.Errors);
+            }
             return Ok();
         }
         [HttpPatch]
