@@ -64,6 +64,15 @@ const routes: Routes = [{
       .then(m => m.SettingsModule),
     },
     {
+      path: 'country',
+      canActivate: [AuthGuard],
+      data: {
+        role: ['Admin','User']
+      },
+      loadChildren: () => import('./country/country.module')
+      .then(m => m.CountryModule),
+    },
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',

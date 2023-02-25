@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from "../../../environments/environment";
-import { User } from '../data/users';
 import { Country } from '../interfaces/common/countries';
 
 @Injectable({
@@ -10,7 +9,7 @@ import { Country } from '../interfaces/common/countries';
 })
 export class CountryService {
 
-  private api: string = environment.apiUrl + "/Country";
+  private api: string = environment.apiUrl + "/Country"
   constructor(private http: HttpClient){
 
   }
