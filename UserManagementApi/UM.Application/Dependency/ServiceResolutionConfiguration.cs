@@ -2,8 +2,6 @@
 using UM.Application.Service;
 using UM.Domain.IEntity;
 using Microsoft.Extensions.DependencyInjection;
-using UM.Domain.IRepository;
-using UM.Infrastructure.Repository;
 
 namespace UM.Application.Dependency
 {
@@ -14,6 +12,7 @@ namespace UM.Application.Dependency
             services.AddScoped<IOtpService, OtpService>();
             services.AddScoped<ICurrentUser, CurrentUser>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICountryService, CountryService>();
 
             return services;
         }

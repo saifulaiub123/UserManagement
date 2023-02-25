@@ -17,6 +17,7 @@ namespace UM.Infrastructure.DBContext
         }
 
         public DbSet<Otp> Otps { get; set; }
+        public DbSet<Country> Country { get; set; }
         public DbSet<ApplicationUser> Users { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
