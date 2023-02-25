@@ -16,6 +16,19 @@ namespace UM.Api.Authentication
         public static IServiceCollection TokenAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
             var jwtSettings = configuration.GetSection(ConfigOptions.JWT).Get<JWTSettings>();
+            services.AddIdentity<ApplicationUser, Role>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequiredLength = 4;
+                options.Password.RequireDigit = false;
+                options.Password.RequireUppercase = false;
+
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredUniqueChars = 0;
+            });
 
             services.AddAuthentication(option =>
                 {
@@ -47,18 +60,18 @@ namespace UM.Api.Authentication
                     };
                 });
 
-                services.AddIdentity<ApplicationUser, Role>(options =>
-                {
-                    options.Password.RequiredLength = 4;
-                    options.Password.RequireDigit = false;
-                    options.Password.RequireUppercase = false;
+                //services.AddIdentity<ApplicationUser, Role>(options =>
+                //{
+                //    options.Password.RequiredLength = 4;
+                //    options.Password.RequireDigit = false;
+                //    options.Password.RequireUppercase = false;
 
-                    options.Password.RequireLowercase = false;
-                    options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequiredUniqueChars = 0;
-                })
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                //    options.Password.RequireLowercase = false;
+                //    options.Password.RequireNonAlphanumeric = false;
+                //    options.Password.RequiredUniqueChars = 0;
+                //})
+                //.AddEntityFrameworkStores<ApplicationDbContext>()
+                //.AddDefaultTokenProviders();
             return services;
         }
     }
