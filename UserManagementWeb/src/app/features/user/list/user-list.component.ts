@@ -4,6 +4,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { UserCustomActionComponent } from '../../../@components/custom-smart-table-components/user-custom-action/user-custom-action.component';
 import { User } from '../../../@core/model/user';
 import { UserService } from '../../../@core/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-user',

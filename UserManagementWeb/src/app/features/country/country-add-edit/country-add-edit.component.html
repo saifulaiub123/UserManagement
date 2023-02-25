@@ -1,1 +1,42 @@
-<p>country-add-edit works!</p>
+<div class="row">
+  <form class="add-edit-form" *ngIf="countryAddEditFormGroup" [formGroup]="countryAddEditFormGroup">
+    <div class="col-md-12">
+  <nb-card class="nb-card-main">
+    <nb-card-header>
+      {{pageTitle}}
+      <nb-icon icon="close-outline" style="font-size: 1.5rem;cursor: pointer;float: right;" [options]="{ animation: { type: 'zoom' } }" (click)="cancel()"></nb-icon>
+    </nb-card-header>
+    <nb-card-body>
+      <nb-card>
+        <nb-card-body>
+            <div class="row show-grid">
+              <div class="col-sm-12">
+                <div class="form-group row">
+                  <label for="inputName" class="label col-sm-4 col-form-label">Name*</label>
+                  <div class="col-sm-8">
+                    <input type="text"
+                      nbInput
+                      formControlName="name"
+                      fullWidth
+                      id="inputName"
+                      fieldSize="medium"
+                      placeholder="Name"
+                    >
+                    <ngx-validation-message label="Name" [showRequired]="name?.errors?.required && name.touched"></ngx-validation-message>
+                  </div>
+                </div>
+                <button nbButton type="button" status="primary" size="small" [nbSpinner]="loading" nbSpinnerStatus="control"  style="float: right" (click)="submit()">Save</button>
+              </div>
+            </div>
+        </nb-card-body>
+      </nb-card>
+    </nb-card-body>
+    <nb-card-footer>
+    </nb-card-footer>
+  </nb-card>
+  </div>
+</form>
+</div>
+
+
+

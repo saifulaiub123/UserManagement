@@ -1,4 +1,7 @@
 <nb-card>
+  <nb-card-header>
+    <button nbButton type="button" status="primary" size="small" style="float: left" (click)="navigateToAddEdit()">Add</button>
+  </nb-card-header>
   <nb-card-body>
       <ng2-smart-table
         [settings]="settingsSourceCountry"

@@ -24,6 +24,14 @@ const routes: Routes = [{
       component: CountryAddEditComponent,
     },
     {
+      path: 'add-edit/:countryId',
+      canActivate: [AuthGuard],
+      data: {
+        role: ['Admin','User']
+      },
+      component: CountryAddEditComponent,
+    },
+    {
       path: '',
       redirectTo: 'list',
       pathMatch: 'full',

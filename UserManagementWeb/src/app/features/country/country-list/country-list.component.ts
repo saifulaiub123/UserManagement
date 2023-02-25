@@ -5,6 +5,9 @@ import { UserCustomActionComponent } from '../../../@components/custom-smart-tab
 import { Country } from '../../../@core/interfaces/common/countries';
 import { UserService } from '../../../@core/mock/users.service';
 import { UserSharedService } from '../../user/user-shared.service';
+import { Router } from '@angular/router';
+import { CountryModel } from '../../../@core/model/country-model';
+import { CountryActionComponent } from '../../../@components/custom-smart-table-components/country-action/country-action.component';
 
 @Component({
   selector: 'ngx-country-list',
@@ -13,7 +16,7 @@ import { UserSharedService } from '../../user/user-shared.service';
 })
 export class CountryListComponent  implements OnInit {
 
-  countries: Country[] = [];
+  countries: CountryModel[] = [];
 
   sourceCountry: LocalDataSource = new LocalDataSource();
 
@@ -43,7 +46,7 @@ export class CountryListComponent  implements OnInit {
       action: {
         title: 'Action',
         type: 'custom',
-        renderComponent: UserCustomActionComponent,
+        renderComponent: CountryActionComponent,
         valuePrepareFunction: (value, row, cell) => {
           return row.id;
         },
@@ -55,7 +58,7 @@ export class CountryListComponent  implements OnInit {
     }
   };
 
-    constructor(private _countryService: CountryService,private _userSharedService: UserSharedService) { }
+    constructor(private _countryService: CountryService,private _userSharedService: UserSharedService,private _router: Router) { }
 
     ngOnInit(): void {
       this.subscribeSharedData();
@@ -77,6 +80,11 @@ export class CountryListComponent  implements OnInit {
         this.countries = data;
         this.sourceCountry.load(data);
       })
+    }
+
+    navigateToAddEdit()
+    {
+      this._router.navigate(['feature/country/add-edit']);
     }
 
   }

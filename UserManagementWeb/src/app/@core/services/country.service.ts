@@ -18,7 +18,7 @@ export class CountryService {
     return this.http.get<Country[]>(`${this.api}/GetAll`);
   }
   getCountryById(id: number): Observable<Country>{
-    return this.http.get<Country>(`${this.api}/GeById?id=`+id);
+    return this.http.get<Country>(`${this.api}/GetById?id=`+id);
   }
   addCountry(data: any): Observable<any>{
     return this.http.post<any>(`${this.api}/Add`,data);
@@ -27,7 +27,7 @@ export class CountryService {
     return this.http.put(`${this.api}/Update`,data);
   }
 
-  deleteUser(id: number): Observable<any>{
+  delete(id: number): Observable<any>{
     return this.http.delete(`${this.api}/Delete?id=`+id);
   }
 
