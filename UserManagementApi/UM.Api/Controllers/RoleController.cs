@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,7 @@ using UM.Domain.Model;
 
 namespace UM.Api.Controllers
 {
-
+    [Authorize]
     public class RoleController : BaseController
     {
         private readonly RoleManager<Domain.DBModel.Role> _roleManager;

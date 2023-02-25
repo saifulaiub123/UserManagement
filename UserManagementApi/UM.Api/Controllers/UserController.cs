@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using UM.Domain.ViewModel;
 
 namespace UM.Api.Controllers
 {
+    [Authorize]
     public class UserController : BaseController
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -43,6 +45,7 @@ namespace UM.Api.Controllers
             await _userService.UpdateUser(user);
             return Ok();
         }
+        [AllowAnonymous]
         [HttpPatch]
         [Route("ChangePassword")]
         public async Task<IActionResult> ChangePassword(ChangePasswordModel changePasswordModel)
