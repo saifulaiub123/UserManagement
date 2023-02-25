@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { FeaturesComponent } from './features.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { AuthGuard } from '../auth/auth.guard';
+import { CountryComponent } from './country/country.component';
 
 const routes: Routes = [{
   path: '',
@@ -53,6 +54,14 @@ const routes: Routes = [{
         role: ['Partner']
       },
       component: ReportsComponent,
+    },
+    {
+      path: 'country',
+      canActivate: [AuthGuard],
+      data: {
+        role: ['Admin','User']
+      },
+      component: CountryComponent,
     },
     {
       path: 'settings',

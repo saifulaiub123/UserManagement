@@ -15,6 +15,7 @@ import { AccessDeniedComponent } from '../page/access-denied/access-denied.compo
 import { SettingsModule } from './settings/settings.module';
 import { OrderComponent } from './order/order.component';
 import { ReportsComponent } from './reports/reports.component';
+import { CountryComponent } from './country/country.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { ReportsComponent } from './reports/reports.component';
     DashboardComponent,
     OrderComponent,
     RewardPointsComponent,
-    ReportsComponent
+    ReportsComponent,
+    CountryComponent
   ],
 })
 export class FeaturesModule {

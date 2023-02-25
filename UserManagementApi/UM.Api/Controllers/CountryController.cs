@@ -5,7 +5,7 @@ using UM.Domain.Model;
 
 namespace UM.Api.Controllers
 {
-    public class CountryController : ControllerBase
+    public class CountryController : BaseController
     {
         private readonly ICountryService _countryService;
 

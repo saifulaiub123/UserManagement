@@ -32,4 +32,10 @@ export const MENU_ITEMS = [
     link: '/feature/reports',
     role: ['Partner']
   },
+  {
+    title: 'Country',
+    icon: 'keypad-outline',
+    link: '/feature/country',
+    role: ['Admin','User']
+  },
 ];
